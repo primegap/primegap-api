@@ -66,6 +66,8 @@ RSpec.describe CustomersController, type: :controller do
         put :update, id: customer.id, customer: new_attributes, format: :json
         customer.reload
         expect(customer.full_name).to eq('John F. Doe')
+        expect(customer.first_name).to eq('John F.')
+        expect(customer.last_name).to eq('Doe')
         expect(customer.phone).to eq('234567890')
       end
 
