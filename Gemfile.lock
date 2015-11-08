@@ -1,3 +1,10 @@
+PATH
+  remote: ../primegap-core
+  specs:
+    primegap-core (0.1.0)
+      actionmailer (~> 4.2.4)
+      activerecord (~> 4.2.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -120,6 +127,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  primegap-core!
   rails (= 4.2.4)
   rails-api
   rspec-rails (~> 3.3)

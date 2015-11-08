@@ -4,6 +4,9 @@ gem 'rails', '4.2.4'
 gem 'rails-api'
 gem 'sqlite3'
 
+# Primegap Gems
+gem 'primegap-core', path: '../primegap-core'
+
 group :development do
   gem 'spring'
 end
