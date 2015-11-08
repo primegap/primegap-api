@@ -7,4 +7,3 @@ Metrics/LineLength:
 AllCops:
   Exclude:
     - db/**/*
-    - spec/dummy/db/**/*
