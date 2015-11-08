@@ -1,5 +1,7 @@
-PATH
-  remote: ../primegap-core
+GIT
+  remote: git://github.com/primegap/primegap-core.git
+  revision: 9612f876490cc5a88fa567b2baff48cb74042900
+  branch: master
   specs:
     primegap-core (0.1.0)
       actionmailer (~> 4.2.4)

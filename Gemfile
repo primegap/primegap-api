@@ -5,7 +5,7 @@ gem 'rails-api'
 gem 'sqlite3'
 
 # Primegap Gems
-gem 'primegap-core', path: '../primegap-core'
+gem 'primegap-core', github: 'primegap/primegap-core', branch: 'master'
 
 group :development do
   gem 'spring'
