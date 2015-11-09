@@ -1,11 +1,13 @@
 GIT
   remote: git://github.com/primegap/primegap-core.git
-  revision: 9612f876490cc5a88fa567b2baff48cb74042900
+  revision: ce0e649f6b38896360ddea256767ed70a3d9d8cf
   branch: master
   specs:
     primegap-core (0.1.0)
       actionmailer (~> 4.2.4)
       activerecord (~> 4.2.4)
+      bcrypt (~> 3.1.7)
+      has_secure_token
 
 GEM
   remote: https://rubygems.org/
@@ -46,6 +48,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
+    bcrypt (3.1.10)
     builder (3.2.2)
     codeclimate-test-reporter (0.4.7)
       simplecov (>= 0.7.1, < 1.0.0)
@@ -54,6 +57,8 @@ GEM
     erubis (2.7.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    has_secure_token (1.0.0)
+      activerecord (>= 3.0)
     i18n (0.7.0)
     json (1.8.3)
     loofah (2.0.3)
