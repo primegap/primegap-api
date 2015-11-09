@@ -6,6 +6,8 @@ gem 'rails', '4.2.4'
 gem 'rails-api'
 gem 'sqlite3'
 
+gem 'warden'
+
 # Primegap Gems
 gem 'primegap-core', github: 'primegap/primegap-core', branch: 'master'
 
