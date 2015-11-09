@@ -7,6 +7,7 @@ gem 'rails-api'
 gem 'sqlite3'
 
 gem 'warden'
+gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 
 # Primegap Gems
 gem 'primegap-core', github: 'primegap/primegap-core', branch: 'master'
