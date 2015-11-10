@@ -19,11 +19,11 @@ group :production do
 end
 
 group :development do
-  gem 'sqlite3'
   gem 'spring'
 end
 
 group :test do
+  gem 'sqlite3'
   gem 'shoulda-matchers', require: false
   gem 'codeclimate-test-reporter', require: nil
 end
