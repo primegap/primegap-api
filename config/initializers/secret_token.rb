@@ -16,4 +16,4 @@
 # Using secret_token for rails3 compatibility. Change to secret_key_base
 # to avoid deprecation warning.
 # Can be safely removed in a rails3 api-only application.
-PrimegapApi::Application.config.secret_token = '205061e3782484ced5ce8ed255e3d16a35259a2d8601bf190b57474f78c107fabe7bc412a47a354735477bb76d0b9fdcb66543613c330a7cec42e9885f36765a'
+Primegap::Api::Application.config.secret_token = '205061e3782484ced5ce8ed255e3d16a35259a2d8601bf190b57474f78c107fabe7bc412a47a354735477bb76d0b9fdcb66543613c330a7cec42e9885f36765a'
