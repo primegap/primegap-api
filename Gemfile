@@ -7,6 +7,7 @@ gem 'rails-api'
 
 gem 'warden'
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
+gem 'pundit'
 
 # Primegap Gems
 gem 'primegap-core', github: 'primegap/primegap-core', branch: 'master'
