@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe CustomerPolicy do
+RSpec.describe CustomerPolicy, type: :model do
   subject { CustomerPolicy.new(user, customer) }
 
   let(:user) { User.create(email: 'user@example.com', password: 'password', company_id: company_id) }

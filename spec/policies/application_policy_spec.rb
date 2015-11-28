@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ApplicationPolicy do
+RSpec.describe ApplicationPolicy, type: :model do
   subject { ApplicationPolicy.new(user, record) }
 
   let(:user) { User.create(email: 'user@example.com', password: 'password') }
