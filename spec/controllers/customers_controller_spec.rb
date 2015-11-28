@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CustomersController, type: :controller do
   before do
-    user = User.create(email: 'user@example.com', password: 'password')
+    user = User.create(email: 'user@example.com', password: 'password', company_id: 1)
     authentication_token = AuthenticationToken.create(user_id: user.id,
                                                       body: 'token',
                                                       last_used_at: DateTime.current)
@@ -18,11 +18,11 @@ RSpec.describe CustomersController, type: :controller do
   # Customer. As you add validations to Customer, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    { full_name: 'John Doe', email: 'john.doe@example.com', phone: '123456789' }
+    { full_name: 'John Doe', email: 'john.doe@example.com', phone: '123456789', company_id: 1 }
   end
 
   let(:invalid_attributes) do
-    { full_name: nil, email: 'john.doe@example.com', phone: '123456789' }
+    { full_name: nil, email: 'john.doe@example.com', phone: '123456789', company_id: 1 }
   end
 
   let!(:customer) { Customer.create(valid_attributes) }

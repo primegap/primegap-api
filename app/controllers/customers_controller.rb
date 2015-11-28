@@ -1,8 +1,10 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :update, :destroy]
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
 
   def index
-    @customers = Customer.all
+    @customers = policy_scope(Customer)
 
     render json: @customers
   end
@@ -13,6 +15,7 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
+    authorize @customer
 
     if @customer.save
       render json: @customer, status: :created, location: @customer
@@ -39,9 +42,10 @@ class CustomersController < ApplicationController
 
   def set_customer
     @customer = Customer.find(params[:id])
+    authorize @customer
   end
 
   def customer_params
-    params.require(:customer).permit(:full_name, :email, :phone)
+    params.require(:customer).permit(:full_name, :email, :phone, :company_id)
   end
 end
