@@ -31,6 +31,7 @@ RSpec.describe CustomersController, type: :controller do
     it 'assigns all customers as @customers' do
       get :index, format: :json
       expect(assigns(:customers)).to eq([customer])
+      expect(response).to be_success
     end
   end
 
@@ -38,6 +39,7 @@ RSpec.describe CustomersController, type: :controller do
     it 'assigns the requested customer as @customer' do
       get :show, id: customer.id, format: :json
       expect(assigns(:customer)).to eq(customer)
+      expect(response).to be_success
     end
   end
 
@@ -53,6 +55,12 @@ RSpec.describe CustomersController, type: :controller do
         post :create, customer: valid_attributes, format: :json
         expect(assigns(:customer)).to be_a(Customer)
         expect(assigns(:customer)).to be_persisted
+        expect(response).to be_success
+      end
+
+      it 'returns success status' do
+        post :create, customer: valid_attributes, format: :json
+        expect(response).to be_success
       end
     end
 
@@ -63,7 +71,7 @@ RSpec.describe CustomersController, type: :controller do
       end
 
       it 'returns unprocessable_entity status' do
-        put :create, customer: invalid_attributes
+        post :create, customer: invalid_attributes, format: :json
         expect(response.status).to eq(422)
       end
     end
@@ -85,8 +93,13 @@ RSpec.describe CustomersController, type: :controller do
       end
 
       it 'assigns the requested customer as @customer' do
-        put :update, id: customer.id, customer: valid_attributes, format: :json
+        put :update, id: customer.id, customer: new_attributes, format: :json
         expect(assigns(:customer)).to eq(customer)
+      end
+
+      it 'returns success status' do
+        put :update, id: customer.id, customer: new_attributes, format: :json
+        expect(response).to be_success
       end
     end
 
