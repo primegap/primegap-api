@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
 
   rescue_from ActiveRecord::RecordNotFound,       with: :not_found
   rescue_from ActionController::ParameterMissing, with: :missing_param_error
-  rescue_from Pundit::NotAuthorizedError, with: :not_authorized
+  rescue_from Pundit::NotAuthorizedError,         with: :not_authorized
 
   private
 
