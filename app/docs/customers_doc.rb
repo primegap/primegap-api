@@ -1,10 +1,13 @@
 module CustomersDoc
   extend BaseDoc
-  resource :customers
+
+  def self.superclass
+    CustomersController
+  end
 
   resource_description do
+    resource_id 'Customer'
     formats [:json]
-    api_versions 'public'
   end
 
   def_param_group :customer do
