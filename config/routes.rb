@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  apipie
   resources :customers, only: [:index, :show, :create, :update, :destroy]
   resource :sessions, only: [:create, :destroy]
 
