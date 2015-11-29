@@ -26,10 +26,6 @@ class CustomerPolicy < ApplicationPolicy
     customer.company_id == user.company_id
   end
 
-  def scope
-    Pundit.policy_scope!(user, Customer)
-  end
-
   class Scope < Scope
     def resolve
       scope.where(company_id: user.company_id)
