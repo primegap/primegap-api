@@ -2,10 +2,9 @@ class CustomersController < ApplicationController
   include CustomersDoc
 
   before_action :set_customer, only: [:show, :update, :destroy]
-  after_action :verify_authorized, except: :index
-  after_action :verify_policy_scoped, only: :index
 
   def index
+    authorize Customer
     @customers = policy_scope(Customer)
 
     render json: @customers
