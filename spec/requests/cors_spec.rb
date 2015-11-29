@@ -5,6 +5,7 @@ RSpec.describe 'CORS', type: :request do
 
   it 'respond with 204 and CORS headers' do
     expect(response.status).to eq(204)
+    expect(response.body).to be_blank
   end
 
   it 'returns the Access-Control-Allow-Origin header to allow CORS from anywhere' do
