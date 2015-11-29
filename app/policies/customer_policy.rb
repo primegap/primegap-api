@@ -7,28 +7,34 @@ class CustomerPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    user.company_id.present?
   end
 
   def show?
-    customer.company_id == user.company_id
+    has_company?
   end
 
   def create?
-    customer.company_id == user.company_id
+    has_company?
   end
 
   def update?
-    customer.company_id == user.company_id
+    has_company?
   end
 
   def destroy?
-    customer.company_id == user.company_id
+    has_company?
   end
 
   class Scope < Scope
     def resolve
       scope.where(company_id: user.company_id)
     end
+  end
+
+  private
+
+  def has_company?
+    user.company_id.present? && customer.company_id == user.company_id
   end
 end
