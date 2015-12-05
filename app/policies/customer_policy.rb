@@ -11,19 +11,19 @@ class CustomerPolicy < ApplicationPolicy
   end
 
   def show?
-    has_company?
+    company?
   end
 
   def create?
-    has_company?
+    company?
   end
 
   def update?
-    has_company?
+    company?
   end
 
   def destroy?
-    has_company?
+    company?
   end
 
   class Scope < Scope
@@ -34,7 +34,7 @@ class CustomerPolicy < ApplicationPolicy
 
   private
 
-  def has_company?
+  def company?
     user.company_id.present? && customer.company_id == user.company_id
   end
 end
