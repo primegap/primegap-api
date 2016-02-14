@@ -37,7 +37,7 @@ RSpec.describe CustomersController, type: :controller do
 
   describe 'GET #show' do
     it 'assigns the requested customer as @customer' do
-      get :show, id: customer.id, format: :json
+      get :show, params: { id: customer.id }, format: :json
       expect(assigns(:customer)).to eq(customer)
       expect(response).to be_success
     end
@@ -47,31 +47,31 @@ RSpec.describe CustomersController, type: :controller do
     context 'with valid params' do
       it 'creates a new Customer' do
         expect do
-          post :create, customer: valid_attributes, format: :json
+          post :create, params: { customer: valid_attributes }, format: :json
         end.to change(Customer, :count).by(1)
       end
 
       it 'assigns a newly created customer as @customer' do
-        post :create, customer: valid_attributes, format: :json
+        post :create, params: { customer: valid_attributes }, format: :json
         expect(assigns(:customer)).to be_a(Customer)
         expect(assigns(:customer)).to be_persisted
         expect(response).to be_success
       end
 
       it 'returns success status' do
-        post :create, customer: valid_attributes, format: :json
+        post :create, params: { customer: valid_attributes }, format: :json
         expect(response).to be_success
       end
     end
 
     context 'with invalid params' do
       it 'assigns a newly created but unsaved customer as @customer' do
-        post :create, customer: invalid_attributes, format: :json
+        post :create, params: { customer: invalid_attributes }, format: :json
         expect(assigns(:customer)).to be_a_new(Customer)
       end
 
       it 'returns unprocessable_entity status' do
-        post :create, customer: invalid_attributes, format: :json
+        post :create, params: { customer: invalid_attributes }, format: :json
         expect(response.status).to eq(422)
       end
     end
@@ -83,8 +83,11 @@ RSpec.describe CustomersController, type: :controller do
         { full_name: 'John F. Doe', phone: '234567890' }
       end
 
+      before do
+        put :update, params: { id: customer.id, customer: new_attributes }, format: :json
+      end
+
       it 'updates the requested customer' do
-        put :update, id: customer.id, customer: new_attributes, format: :json
         customer.reload
         expect(customer.full_name).to eq('John F. Doe')
         expect(customer.first_name).to eq('John F.')
@@ -93,24 +96,24 @@ RSpec.describe CustomersController, type: :controller do
       end
 
       it 'assigns the requested customer as @customer' do
-        put :update, id: customer.id, customer: new_attributes, format: :json
         expect(assigns(:customer)).to eq(customer)
       end
 
       it 'returns success status' do
-        put :update, id: customer.id, customer: new_attributes, format: :json
         expect(response).to be_success
       end
     end
 
     context 'with invalid params' do
+      before do
+        put :update, params: { id: customer.id, customer: invalid_attributes }, format: :json
+      end
+
       it 'assigns the customer as @customer' do
-        put :update, id: customer.id, customer: invalid_attributes, format: :json
         expect(assigns(:customer)).to eq(customer)
       end
 
       it 'returns unprocessable_entity status' do
-        put :update, id: customer.id, customer: invalid_attributes, format: :json
         expect(response.status).to eq(422)
       end
     end
@@ -119,12 +122,12 @@ RSpec.describe CustomersController, type: :controller do
   describe 'DELETE #destroy' do
     it 'destroys the requested customer' do
       expect do
-        delete :destroy, id: customer.id, format: :json
+        delete :destroy, params: { id: customer.id }, format: :json
       end.to change(Customer, :count).by(-1)
     end
 
     it 'redirects to the customers list' do
-      delete :destroy, id: customer.id, format: :json
+      delete :destroy, params: { id: customer.id }, format: :json
       expect(response.status).to eq(204)
     end
   end

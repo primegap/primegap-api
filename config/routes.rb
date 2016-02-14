@@ -1,19 +1,6 @@
 Rails.application.routes.draw do
-  apipie
-  resources :customers, only: [:index, :show, :create, :update, :destroy]
-  resource :sessions, only: [:create, :destroy]
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  cors_head = proc do
-    [
-      204,
-      {
-        'Content-Type'                 => 'text/plain',
-        'Access-Control-Allow-Origin'  => CORS_ALLOW_ORIGIN,
-        'Access-Control-Allow-Methods' => CORS_ALLOW_METHODS,
-        'Access-Control-Allow-Headers' => CORS_ALLOW_HEADERS
-      },
-      []
-    ]
-  end
-  match '/*path', to: cors_head, via: [:options, :head]
+  # Serve websocket cable requests in-process
+  # mount ActionCable.server => '/cable'
 end

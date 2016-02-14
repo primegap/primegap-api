@@ -28,20 +28,20 @@ RSpec.describe SessionsController, type: :controller do
 
   describe 'POST #create' do
     context 'with valid credentials' do
-      before { post :create, valid_attributes, format: :json }
+      before { post :create, params: valid_attributes, format: :json }
 
       it { expect(response).to be_success }
       it { expect(parsed_response).to eq('user_email' => user.email, 'auth_token' => authentication_token.body) }
     end
 
     context 'with invalid credentials' do
-      before { post :create, invalid_attributes, format: :json }
+      before { post :create, params: invalid_attributes, format: :json }
 
       it { expect(response.status).to eq(401) }
     end
 
     context 'with missing/invalid params' do
-      before { post :create, foo: { bar: 'baz' }, format: :json }
+      before { post :create, params: { foo: { bar: 'baz' } }, format: :json }
 
       it { expect(response.status).to eq(422) }
     end
